@@ -95,7 +95,7 @@ ol {
     margin: 0;
     padding: 0;
 }
-select{
+select {
     background-color: #fff;
 }
 @include setChildCmnt("custom classes starts");
@@ -113,10 +113,17 @@ select{
     }
     #{".button-" + $className} {
         background: $clr !important;
-        color: $white;
 
-        &:hover {
-            background-color: lighten($color: $clr, $amount: 10%) !important;
+        @if (lightness($clr) <= 60%) {
+            color: $white;
+            &:hover {
+                background-color: lighten($color: $clr, $amount: 10%) !important;
+            }
+        } @else {
+            color: $black;
+            &:hover {
+                background-color: darken($color: $clr, $amount: 10%) !important;
+            }
         }
 
         &:disabled,
@@ -130,28 +137,20 @@ select{
                 background-color: $clr !important;
             }
         }
-
-        // @if (not str-index($string: $className, $substring: "primary")) {
-        //     &:hover {
-        //         background-color: lighten($color: $clr, $amount: 10%) !important;
-        //     }
-        // } @else {
-        //     &:hover {
-        //         background-color: darken($color: $clr, $amount: 15%) !important;
-        //     }
-        // }
     }
     #{".link-" + $className} {
         color: $clr !important;
-        @if (not str-index($string: $className, $substring: "secondary")) {
+        
+        @if (lightness($clr) < 50%) {
             &:hover {
                 color: lighten($color: $clr, $amount: 10%) !important;
             }
         } @else {
             &:hover {
-                color: darken($color: $clr, $amount: 15%) !important;
+                color: darken($color: $clr, $amount: 10%) !important;
             }
         }
+
     }
     #{".link-hover-" + $className} {
         color: inherit;
@@ -202,13 +201,24 @@ select{
             // box-shadow: 0px 0px 3px -2px lighten($color: $clr, $amount: 10%);
             // background-color: rgba($clr,1);
         }
-        @if ($className == "white") {
+        
+        @if (lightness($clr) <= 60%) {
+            color: $white;
+            &:focus {
+                background-color: lighten($color: $clr, $amount: 10%) !important;
+            }
+            
             &::placeholder {
-                color: rgba(#000, 0.5);
+                color: rgba(#fff, lightness($clr)*1.4);
             }
         } @else {
+            color: $black;
+            &:focus {
+                background-color: lighten($color: $clr, $amount: 10%) !important;
+            }
+             
             &::placeholder {
-                color: rgba(#fff, 0.5);
+                color: rgba(#000, 0.6);
             }
         }
 

@@ -2,7 +2,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label class="label" for="email">Email</label>
-            <input type="email" class="input input-border input-border-secondary2" id="email">
+            <input type="email" placeholder="E.g- example@gmail.com" class="input input-border input-border-secondary2" id="email">
         </div>
         <div class="form-group col-md-6">
             <label class="label" for="password">Password</label>
