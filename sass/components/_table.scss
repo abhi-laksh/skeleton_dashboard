@@ -1,0 +1,29 @@
+.table {
+    thead {
+        th {
+            background-color: $primary2;
+            border-color: $secondary2;
+            color: #fff;
+        }
+    }
+    th,
+    td {
+        border-color: $secondary2;
+        vertical-align: middle;
+    }
+    button {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.75rem;
+    }
+    &-hover {
+        tbody {
+            tr {
+                &:hover {
+                    color: $dark;
+                    background-color: rgba($secondary2, 0.075);
+                }
+            }
+        }
+    }
+}

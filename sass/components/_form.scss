@@ -1,0 +1,9 @@
+.form {
+    &-admin {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        &-parent {
+            height: 100vh;
+        }
+    }
+}
